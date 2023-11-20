@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework.permissions import AllowAny
 from rest_framework import permissions
 from users.views import UserViewSet
 from drf_yasg.views import get_schema_view
@@ -19,12 +21,14 @@ schema_view = get_schema_view(
         license=openapi.License(name="MIT"),
     ),
     public=True,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=(AllowAny,),  
 )
 
 urlpatterns = [
+    path('', include(router.urls),),
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+
 ]
 

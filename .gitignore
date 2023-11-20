@@ -1,0 +1,45 @@
+# Arquivos Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Ambiente virtual
+venv/
+env/
+
+# Arquivos de log
+*.log
+
+# Banco de dados SQLite
+*.sqlite3
+
+# Configurações específicas para IDEs
+.idea/
+.vscode/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Arquivos de cache
+__pycache__/
+.cache/
+
+# Arquivos de compilação Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Arquivos de compilação de Cython
+*.so
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Byte-compiled / optimized / DLL directories
+__pycach

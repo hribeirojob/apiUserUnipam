@@ -2,6 +2,7 @@ version: '3'
 
 services:
   postgres:
+    container_name: user_postgres
     image: postgres:latest
     environment:
       POSTGRES_DB: microserviceUser
@@ -10,12 +11,13 @@ services:
     ports:
       - 5432:5432
 
-  # web:
-  #   build: .
-  #   command: python manage.py runserver 0.0.0.0:8000
-  #   volumes:
-  #     - .:/app
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - postgres
+  web:
+    container_name: apiUser
+    build: .
+    command: bash -c "python manage.py migrate && echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@unipam.edu.br', '${PASS_ADMIN}')\" | python manage.py shell && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    restart: always
+    
