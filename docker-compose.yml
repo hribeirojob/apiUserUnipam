@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: microserviceUser
+      POSTGRES_USER: user_postgres_user
+      POSTGRES_PASSWORD: 63&:c4Acl3}^
+    ports:
+      - 5432:5432
+
+  # web:
+  #   build: .
+  #   command: python manage.py runserver 0.0.0.0:8000
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - postgres
